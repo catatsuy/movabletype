@@ -21,7 +21,7 @@ const (
 )
 
 // Movable Type Import Format
-type MT struct {
+type Entry struct {
 	Author   string
 	Title    string
 	Basename string
@@ -47,22 +47,22 @@ type MT struct {
 }
 
 // NewMT creates MT.
-func NewMT() *MT {
-	return &MT{
+func NewEntry() *Entry {
+	return &Entry{
 		AllowComments: DefaultAllowComments,
 		AllowPings:    DefaultAllowPings,
 	}
 }
 
 // Parse creates MT struct from io.Reader
-func Parse(r io.Reader) ([]*MT, error) {
-	mts := []*MT{}
+func Parse(r io.Reader) ([]*Entry, error) {
+	mts := []*Entry{}
 
 	scanner := bufio.NewScanner(r)
 
 	var err error
 
-	m := NewMT()
+	m := NewEntry()
 
 	for scanner.Scan() {
 		ss := strings.Split(scanner.Text(), ": ")
@@ -72,7 +72,7 @@ func Parse(r io.Reader) ([]*MT, error) {
 
 			if value == "--------" {
 				mts = append(mts, m)
-				m = NewMT()
+				m = NewEntry()
 				continue
 			}
 

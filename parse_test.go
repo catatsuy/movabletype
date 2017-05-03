@@ -52,8 +52,8 @@ EXTENDED BODY:
 --------
 `)
 
-	expected := []*MT{
-		&MT{
+	expected := []*Entry{
+		&Entry{
 			Author:          "catatsuy",
 			Title:           "ポエム",
 			Basename:        "poem",
@@ -67,7 +67,7 @@ EXTENDED BODY:
 			Body:            "<p>body</p>\n<p>bodybody</p>\n<p>bodybodybody</p>\n",
 			ExtendedBody:    "<p>extended body</p>\n<p>extended body body</p>\n<p>extended body body body</p>\n",
 		},
-		&MT{
+		&Entry{
 			Author:        "catatsuy",
 			Title:         "風邪で声を失った話",
 			Basename:      "2017/04/09/194939",
@@ -136,7 +136,7 @@ func TestParseDate(t *testing.T) {
 }
 
 func TestNewMT(t *testing.T) {
-	m := NewMT()
+	m := NewEntry()
 
 	if m.AllowComments != DefaultAllowComments {
 		t.Errorf("By default, AllowComments is %d, got %d", DefaultAllowComments, m.AllowComments)
