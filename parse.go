@@ -44,6 +44,8 @@ type Entry struct {
 	Body string
 
 	ExtendedBody string
+
+	Excerpt string
 }
 
 // NewMT creates MT.
@@ -101,6 +103,17 @@ func Parse(r io.Reader) ([]*Entry, error) {
 					}
 
 					m.ExtendedBody += line + "\n"
+				}
+				break
+			case "EXCERPT:":
+				for scanner.Scan() {
+					line := scanner.Text()
+
+					if line == "-----" {
+						break
+					}
+
+					m.Excerpt += line + "\n"
 				}
 				break
 			}
