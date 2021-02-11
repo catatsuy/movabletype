@@ -89,7 +89,7 @@ EXTENDED BODY:
 	}
 
 	if !reflect.DeepEqual(mts, expected) {
-		t.Errorf("Error parsing, expected %q; got %q", expected, mts)
+		t.Errorf("Error parsing, expected %#v; got %#v", expected, mts)
 	}
 }
 

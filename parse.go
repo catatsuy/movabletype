@@ -7,8 +7,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/pkg/errors"
 )
 
 // Default
@@ -130,7 +128,7 @@ func Parse(r io.Reader) ([]*Entry, error) {
 		case "ALLOW COMMENTS":
 			m.AllowComments, err = strconv.Atoi(value)
 			if err != nil {
-				return nil, errors.Wrap(err, "ALLOW COMMENTS column is allowed only 0 or 1")
+				return nil, fmt.Errorf("ALLOW COMMENTS column is allowed only 0 or 1: %w", err)
 			}
 			if m.AllowComments != 0 && m.AllowComments != 1 {
 				return nil, fmt.Errorf("ALLOW COMMENTS column is allowed only 0 or 1. Got %d", m.AllowComments)
@@ -139,7 +137,7 @@ func Parse(r io.Reader) ([]*Entry, error) {
 		case "ALLOW PINGS":
 			m.AllowPings, err = strconv.Atoi(value)
 			if err != nil {
-				return nil, errors.Wrap(err, "ALLOW PINGS column is allowed only 0 or 1")
+				return nil, fmt.Errorf("ALLOW PINGS column is allowed only 0 or 1: %w", err)
 			}
 			if m.AllowComments != 0 && m.AllowComments != 1 {
 				return nil, fmt.Errorf("ALLOW PINGS column is allowed only 0 or 1. Got %d", m.AllowPings)
@@ -155,7 +153,7 @@ func Parse(r io.Reader) ([]*Entry, error) {
 				m.Date, err = time.Parse("01/02/2006 15:04:05", value)
 			}
 			if err != nil {
-				return nil, errors.Wrap(err, "Parsing error on DATE column")
+				return nil, fmt.Errorf("Parsing error on DATE column: %w", err)
 			}
 			break
 		case "PRIMARY CATEGORY":
