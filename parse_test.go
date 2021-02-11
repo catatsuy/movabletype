@@ -33,6 +33,9 @@ EXTENDED BODY:
 <p>extended body body</p>
 <p>extended body body body</p>
 -----
+EXCERPT:
+ここに概要が表示されます。
+-----
 --------
 AUTHOR: catatsuy
 TITLE: 風邪で声を失った話
@@ -48,6 +51,9 @@ BODY:
 -----
 EXTENDED BODY:
 <p>extended body body body</p>
+-----
+EXCERPT:
+ここに概要が表示されます。
 -----
 --------
 `)
@@ -66,6 +72,7 @@ EXTENDED BODY:
 			Category:        []string{"ポエム", "技術系"},
 			Body:            "<p>body</p>\n<p>bodybody</p>\n<p>bodybodybody</p>\n",
 			ExtendedBody:    "<p>extended body</p>\n<p>extended body body</p>\n<p>extended body body body</p>\n",
+			Excerpt:         "ここに概要が表示されます。\n",
 		},
 		&Entry{
 			Author:        "catatsuy",
@@ -79,6 +86,7 @@ EXTENDED BODY:
 			Category:      []string{"日常"},
 			Body:          "<p>bodybodybody</p>\n",
 			ExtendedBody:  "<p>extended body body body</p>\n",
+			Excerpt:       "ここに概要が表示されます。\n",
 		},
 	}
 
